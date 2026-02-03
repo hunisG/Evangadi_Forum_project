@@ -22,7 +22,7 @@ async function register(req, res) {
   try {
     //if username or email exists
     const [existingUser] = await dbconnection.query(
-      "SELECT username,userid FROM users_Table WHERE username=? or email=?",
+      "SELECT username,userid FROM users_table WHERE username=? or email=?",
       [username, email]
     );
     if (existingUser.length > 0) {
@@ -45,7 +45,7 @@ async function register(req, res) {
 
     //user inserted all information
     const [result] = await dbconnection.query(
-      "INSERT INTO users_Table(username, firstname, lastname, email, password) values (?,?,?,?,?)",
+      "INSERT INTO users_table(username, firstname, lastname, email, password) values (?,?,?,?,?)",
       [username, firstname, lastname, email, hashedpassword]
     );
 
@@ -85,7 +85,7 @@ async function login(req, res) {
   try {
     //if user doesnot exist
     const [user] = await dbconnection.query(
-      "SELECT username,userid,password FROM users_Table WHERE email=?",
+      "SELECT username,userid,password FROM users_table WHERE email=?",
       [email]
     );
 
