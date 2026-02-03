@@ -17,7 +17,7 @@ async function askQuestion(req, res) {
 
   try {
     await dbconnection.query(
-      `INSERT INTO questions_Table (questionid, userid, title, description)
+      `INSERT INTO questions_table (questionid, userid, title, description)
       VALUES (?, ?, ?, ?)`,
       [uuidv4(), userId, title, description]
     );
@@ -45,8 +45,8 @@ async function allQuestions(req, res) {
           q.description, 
           q.created_at,
           u.username
-      FROM questions_Table q
-      JOIN users_Table u ON q.userid = u.userid
+      FROM questions_table q
+      JOIN users_table u ON q.userid = u.userid
       ORDER BY q.created_at DESC`
     );
 
@@ -82,8 +82,8 @@ async function singleQuestion(req, res) {
           q.description,
           q.created_at, 
           u.username
-      FROM questions_Table q
-      JOIN users_Table u ON q.userid = u.userid
+      FROM questions_table q
+      JOIN users_table u ON q.userid = u.userid
       WHERE q.questionid = ?`,
       [id]
     );
@@ -104,7 +104,7 @@ async function singleQuestion(req, res) {
           a.created_at, 
           u.username
       FROM answers_table a
-      JOIN users_Table u ON a.userid = u.userid
+      JOIN users_table u ON a.userid = u.userid
       WHERE a.questionid = ?
       ORDER BY a.created_at DESC`,
       [id]

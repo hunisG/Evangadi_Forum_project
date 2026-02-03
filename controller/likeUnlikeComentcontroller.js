@@ -113,7 +113,7 @@ async function getReactions(req, res) {
   const [comments] = await dbconnection.query(
     `SELECT ac.commentid, ac.comment, ac.created_at,u.username
      FROM answer_comments ac
-     JOIN users_Table u ON ac.userid=u.userid
+     JOIN users_table u ON ac.userid=u.userid
      WHERE ac.answerid=?
      ORDER BY ac.created_at ASC`,
     [answerId]

@@ -30,7 +30,7 @@ async function postAnswer(req, res) {
      a.created_at,
      u.username
    FROM answers_table a
-   JOIN users_Table u ON a.userid = u.userid
+   JOIN users_table u ON a.userid = u.userid
    WHERE a.answerid = ?`,
       [result.insertId]
     );
