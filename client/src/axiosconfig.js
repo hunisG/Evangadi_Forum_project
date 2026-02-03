@@ -3,7 +3,7 @@ import axios from "axios";
 console.log("Loaded API URL:", import.meta.env.VITE_API_URL);
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://evangadiforumproject-production-b0b1.up.railway.app/api",
 });
 
 instance.interceptors.request.use(
